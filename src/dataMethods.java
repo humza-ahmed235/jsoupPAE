@@ -21,4 +21,23 @@ public class dataMethods {
 
         }
     }
+
+public static void getAnnouncementNews() throws IOException {
+    Document doc = Jsoup.connect("http://www.pacadengg.org/index.html").get();
+    System.out.println("Announcement and news"); // Added to provide a combined heading as i cant at the moment separate
+    Elements ec = doc.select("div.col-2 p");
+    for(Element e : ec) {
+
+        String oneannounnews = e.select("p").text();// Stores each news piece and date piece
+
+        System.out.println(oneannounnews);
+
+
+
+
+    }
+
+
+}
+
 }
