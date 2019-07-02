@@ -21,7 +21,7 @@ public class dataMethods {
 
         }
     }
-
+protected static String paragraph = "";
     public static void getAnnouncementNews() throws IOException {
         Document doc = Jsoup.connect("http://www.pacadengg.org/index.html").get();
         System.out.println("Announcement and news"); // Added to provide a combined heading as i cant at the moment separate
@@ -30,7 +30,8 @@ public class dataMethods {
 
             String oneannounnews = e.select("p").text();// Stores each news piece and date piece
 
-            System.out.println(oneannounnews);
+            //System.out.println(oneannounnews);
+            paragraph = paragraph + oneannounnews + "\n";
 
 
         }
