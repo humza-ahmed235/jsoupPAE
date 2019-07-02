@@ -6,7 +6,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class dataMethods {
-
     public static void getSlidePics() throws IOException {
 
         Document doc = Jsoup.connect("http://www.pacadengg.org/index.html").get();
@@ -21,7 +20,7 @@ public class dataMethods {
 
         }
     }
-protected static String paragraph = "";
+protected static String newsParagraph = "";
     public static void getAnnouncementNews() throws IOException {
         Document doc = Jsoup.connect("http://www.pacadengg.org/index.html").get();
         System.out.println("Announcement and news"); // Added to provide a combined heading as i cant at the moment separate
@@ -31,7 +30,7 @@ protected static String paragraph = "";
             String oneannounnews = e.select("p").text();// Stores each news piece and date piece
 
             //System.out.println(oneannounnews);
-            paragraph = paragraph + oneannounnews + "\n";
+            newsParagraph = newsParagraph + oneannounnews + "\n";
 
 
         }
@@ -55,4 +54,38 @@ Element e2 = doc.select("img").get(1); /* important. I only needed one element s
         }
 
     }
+
+    protected static String fellowParagraph  = "";
+
+    public static void getFellows() throws IOException {
+
+
+        Document doc = Jsoup.connect("http://www.pacadengg.org/founder_fellows.html").get();
+        Elements ec = doc.select("table.tablecss tr p");
+        for (Element e : ec) {
+
+             fellowParagraph = fellowParagraph + e.select("p").text() +"\n";// Stores each news piece and date piece
+
+
+
+
+        }
+    }
+
+protected static String symposiumsParagraph = "";
+public static void getSymposiums() throws IOException {
+
+    Document doc = Jsoup.connect("http://www.pacadengg.org/events.html").get();
+    Elements ec = doc.select("div.wrap tr p");
+
+    for (Element e : ec) {
+         symposiumsParagraph= symposiumsParagraph + e.select("p").text()+"\n"+"\n";
+    }
+
+
+
+}
+
+
+
 }
